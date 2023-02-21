@@ -25,7 +25,7 @@ export class UsuarioService {
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista`);
   }
 
-  //guardar un nuveo usuario
+  //guardar un nuevo usuario
   guardar(request: Usuario):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlAPI}Guardar`, request);
   }
