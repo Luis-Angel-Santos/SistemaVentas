@@ -20,7 +20,6 @@ import { LayoutModule } from './components/layout/layout.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
