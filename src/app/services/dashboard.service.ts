@@ -13,7 +13,7 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
 
-  //obtener todos los productos
+  //obtener el resumen
   resumen():Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Resumen`);
   }
