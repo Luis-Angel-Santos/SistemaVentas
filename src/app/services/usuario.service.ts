@@ -11,7 +11,7 @@ import { Usuario } from '../interfaces/usuario';
 })
 export class UsuarioService {
 
-  private urlAPI: string = environment.endpoint + 'Usuario';
+  private urlAPI: string = environment.endpoint + 'Usuario/';
 
   constructor(private http: HttpClient) { }
 

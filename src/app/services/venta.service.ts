@@ -10,7 +10,7 @@ import { Venta } from '../interfaces/venta';
 })
 export class VentaService {
 
-  private urlAPI: string = environment.endpoint + 'Venta';
+  private urlAPI: string = environment.endpoint + 'Venta/';
 
   constructor(private http: HttpClient) { }
 

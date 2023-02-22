@@ -12,9 +12,9 @@
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Contraseña</mat-label>
-                    <input [type]="ocultarPassword ? 'password' : 'text'" autocomplete="off" formControlName="password" matInput autocomplete placeholder="Ingresa tu contraseña">
-                    <button mat-icon-button matSuffix (click)="!ocultarPassword" type="button">
-                        <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off' : 'visivility'}}</mat-icon>
+                    <input [type]="ocultarPassword ? 'password' : 'text'" autocomplete="off" formControlName="password" matInput placeholder="Ingresa tu contraseña">
+                    <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+                        <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
                 <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="formularioLogin.invalid">

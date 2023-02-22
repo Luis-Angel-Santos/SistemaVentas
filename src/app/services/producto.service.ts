@@ -10,7 +10,7 @@ import { Producto } from '../interfaces/producto';
 })
 export class ProductoService {
 
-  private urlAPI: string = environment.endpoint + 'Producto';
+  private urlAPI: string = environment.endpoint + 'Producto/';
 
   constructor(private http: HttpClient) { }
 

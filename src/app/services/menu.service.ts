@@ -9,7 +9,7 @@ import { ResponseApi } from '../interfaces/response-api';
 })
 export class MenuService {
 
-  private urlAPI: string = environment.endpoint + 'Menu';
+  private urlAPI: string = environment.endpoint + 'Menu/';
 
   constructor(private http: HttpClient) { }
 

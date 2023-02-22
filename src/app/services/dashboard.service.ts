@@ -9,7 +9,7 @@ import { ResponseApi } from '../interfaces/response-api';
 })
 export class DashboardService {
 
-  private urlAPI: string = environment.endpoint + 'Dashboard';
+  private urlAPI: string = environment.endpoint + 'Dashboard/';
 
   constructor(private http: HttpClient) { }
 

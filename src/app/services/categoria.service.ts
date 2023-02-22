@@ -9,7 +9,7 @@ import { ResponseApi } from '../interfaces/response-api';
 })
 export class CategoriaService {
 
-  private urlAPI: string = environment.endpoint + 'Categoria';
+  private urlAPI: string = environment.endpoint + 'Categoria/';
 
   constructor(private http: HttpClient) { }
 
