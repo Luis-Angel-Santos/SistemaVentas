@@ -3,21 +3,21 @@
     <form [formGroup]="formularioUsuario">
         <mat-grid-list cols="1" rowHeight="80px">
             <mat-grid-tile>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="fill">
                     <mat-label>Nombre Completo</mat-label>
                     <input matInput autocomplete="off" formControlName="nombreCompleto" placeholder="Ingresa el nombre completo">
                     <mat-icon matSuffix>account-box</mat-icon>
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="fill">
                     <mat-label>Correo electronico</mat-label>
                     <input matInput autocomplete="off" formControlName="correo" placeholder="Ingresa el correo electronico">
                     <mat-icon matSuffix>mail</mat-icon>
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="fill">
                     <mat-label>Rol</mat-label>
                     <mat-select formControlName="idRol">
                         <mat-option *ngFor="let item of listaRoles" [value]="item.idRol">{{item.nombre}}</mat-option>
@@ -25,7 +25,7 @@
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="fill">
                     <mat-label>Contraseña</mat-label>
                     <input [type]="ocultarPassword ? 'password' : 'text'" autocomplete="off" formControlName="clave" matInput placeholder="Ingresa la contraseña">
                     <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
@@ -34,7 +34,7 @@
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="fill">
                     <mat-label>Estado</mat-label>
                     <mat-select formControlName="esActivo">
                         <mat-option value="1">Activo</mat-option>

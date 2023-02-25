@@ -91,6 +91,7 @@ export class ModalUsuarioComponent implements OnInit{
             this.modalActual.close('true');
           }else{
             this._utilidadServ.mostrarAlerta('No se pudo editar el usuario', 'Opps! ❌');
+            console.log(data.msg, data.value);
           }
         },
         error: (err) => { 
