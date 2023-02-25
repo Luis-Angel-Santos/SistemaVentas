@@ -21,7 +21,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private _utilidadServ: UtilidadService,
     private _usuarioServ: UsuarioService){
-      this.formularioLogin = fb.group({
+      this.formularioLogin = this.fb.group({
         email: ['', Validators.required],
         password: ['', Validators.required]
       });
@@ -39,14 +39,14 @@ export class LoginComponent {
           this._utilidadServ.guardarSesionUsuario(data.value);
           this.router.navigate(["pages"]);
         }else{
-          this._utilidadServ.mostrarAlerta('No se encontro ningun usuarios', 'Opps!')
+          this._utilidadServ.mostrarAlerta('El usuario no existe o alguno de los datos no son correctos', 'Opps! ❌')
         }  
       }, 
       complete: () => {
         this.mostrarLoading = false;
       },
       error: (err) => {
-        this._utilidadServ.mostrarAlerta(`Parece que ha ocurrido un error: ${err.message}`, 'Opps!')    
+        this._utilidadServ.mostrarAlerta(`Parece que ha ocurrido un error: ${err.message}`, 'Opps! ❌')    
       }
     })
   }
