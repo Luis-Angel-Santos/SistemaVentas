@@ -80,22 +80,22 @@ export class ModalUsuarioComponent implements OnInit{
           }
         },
         error: (err) => { 
-          this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err}`, 'Opps! ❌');
+          this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err.message}`, 'Opps! ❌');
          }
       });
     }else{
-      this._usuarioServ.guardar(_usuario).subscribe({
+      this._usuarioServ.editar(_usuario).subscribe({
         next: (data) => {
           if(data.status){
             this._utilidadServ.mostrarAlerta('El usuario fue editado correctamente', 'Ok ✔️')
             this.modalActual.close('true');
           }else{
             this._utilidadServ.mostrarAlerta('No se pudo editar el usuario', 'Opps! ❌');
-            console.log(data.msg, data.value);
+            console.log(data.msg);
           }
         },
         error: (err) => { 
-          this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err}`, 'Opps! ❌');
+          this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err.message}`, 'Opps! ❌');
          }
       });
     }

@@ -87,7 +87,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit{
       if(resultado.isConfirmed){
         this._usuarioServ.eliminar(usuario.idUsuario).subscribe({
           next: (data) => {
-            if(!data.status){
+            if(data.status){
               this._utilidadServ.mostrarAlerta('El usuario fue eliminado correctamente', 'Ok ✔️');
               this.obtenerUsuarios();
             }else{              
@@ -95,7 +95,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit{
             }
           },
           error: (err) => {
-            this._utilidadServ.mostrarAlerta(`Parece que ocurrio un error inesperado: ${err}`, 'Error ❌');
+            this._utilidadServ.mostrarAlerta(`Parece que ocurrio un error inesperado: ${err.message}`, 'Error ❌');
           }
         });
       }
