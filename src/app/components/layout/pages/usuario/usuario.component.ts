@@ -91,7 +91,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit{
               this._utilidadServ.mostrarAlerta('El usuario fue eliminado correctamente', 'Ok ✔️');
               this.obtenerUsuarios();
             }else{              
-              this._utilidadServ.mostrarAlerta('No se pudo eliminar el usuario', 'Error ❌');
+              this._utilidadServ.mostrarAlerta('No se pudo eliminar el usuario. Por favor intente de nuevo.', 'Error ❌');
             }
           },
           error: (err) => {

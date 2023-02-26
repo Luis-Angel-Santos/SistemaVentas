@@ -1,0 +1,13 @@
+table{
+    width: 100%;
+    padding: 15px;
+}
+
+mat-card-content{
+    padding: 15px;
+}
+
+mat-form-field{
+    width: 100%;
+    font-size: 14px;
+}
