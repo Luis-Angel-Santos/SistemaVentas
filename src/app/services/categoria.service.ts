@@ -14,7 +14,7 @@ export class CategoriaService {
   constructor(private http: HttpClient) { }
 
   //obtener todas la categorias
-  lista(idUsuario: number):Observable<ResponseApi>{
+  lista():Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista`);
   }
 }
