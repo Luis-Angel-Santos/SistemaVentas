@@ -34,7 +34,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit{
           }
       },
       error: (err) => {
-        this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err}`, 'Opps! ❌');
+        this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err.message}`, 'Opps! ❌');
       }
     });
   }
