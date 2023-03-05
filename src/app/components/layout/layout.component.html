@@ -2,7 +2,7 @@
     <mat-toolbar-row>
         <h1>Sistema de Ventas</h1>
         <button mat-icon-button (click)="sidenav.toggle();">
-            <mat-icon>menu</mat-icon>
+            <mat-icon matListItemIcon>menu</mat-icon>
         </button>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -11,31 +11,31 @@
     <mat-sidenav #sidenav opened="true" mode="side" style="width: 250px;">
         <mat-nav-list>
             <mat-list-item routerLink="/pages/dashboard">
-                <mat-icon mat-list-icon>dashboard</mat-icon>Dashboard
+                <mat-icon matListItemIcon>dashboard</mat-icon>Dashboard
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item routerLink="/pages/usuarios">
-                <mat-icon mat-list-icon>group</mat-icon>
+                <mat-icon matListItemIcon>group</mat-icon>
                 Usuarios
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item routerLink="/pages/productos">
-                <mat-icon mat-list-icon>collections_bookmark</mat-icon>
+                <mat-icon matListItemIcon>collections_bookmark</mat-icon>
                 Productos
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item routerLink="/pages/venta">
-                <mat-icon mat-list-icon>currency_exchange</mat-icon>
+                <mat-icon matListItemIcon>currency_exchange</mat-icon>
                 Ventas
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item routerLink="/pages/historial-venta">
-                <mat-icon mat-list-icon>edit_note</mat-icon>
-                Historial Venta
+                <mat-icon matListItemIcon>edit_note</mat-icon>
+                Historial Ventas
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item routerLink="/pages/reportes">
-                <mat-icon mat-list-icon>receipt</mat-icon>
+                <mat-icon matListItemIcon>receipt</mat-icon>
                 Reportes
             </mat-list-item>
         </mat-nav-list>

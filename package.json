@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@compodoc/compodoc": "^1.1.19",
+    "animate.css": "^4.1.1",
     "chart.js": "^4.2.1",
     "moment": "^2.29.4",
     "rxjs": "~7.5.0",
