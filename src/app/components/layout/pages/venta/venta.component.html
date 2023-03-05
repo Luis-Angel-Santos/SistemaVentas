@@ -1,1 +1,31 @@
-<p>venta works!</p>
+<h1 style="margin: 20px 0px 0px 40px;">Nueva Venta</h1>
+<mat-card style="margin: 20px 40px 40px 40px;">
+    <mat-card-content>
+        <form [formGroup]="formularioProductoVenta" (ngSubmit)="agregarProductoVenta()">
+            <mat-grid-list cols="4" rowHeight="80px">
+                <mat-grid-tile [colspan]="2">
+                    <mat-form-field class="fullwidth" appearance="fill">
+                        <mat-label>Producto</mat-label>
+                        <input matInput type="text" placeholder="Buscar..." [matAutocomplete]="auto" formControlName="producto">
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="productoParaVenta($event)" [displayWith]="mostrarProducto">
+                            <mat-option *ngFor="let producto of listaProductosFiltro" [value]="producto">
+                                {{producto.nombre}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="fullwidth" appearance="fill" style="margin-left: 40px;">
+                        <mat-label>Cantidad</mat-label>
+                        <input matInput type="number" formControlName="cantidad" placeholder="Cantidad de productos">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button mat-raised-button color="primary" style="width: 80%" [disabled]="formularioProductoVenta.invalid">
+                        <mat-icon mat-list-icon>add</mat-icon> Agregar
+                    </button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card-content>
+</mat-card>
