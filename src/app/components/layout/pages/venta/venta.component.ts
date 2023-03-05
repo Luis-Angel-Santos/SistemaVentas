@@ -124,7 +124,8 @@ export class VentaComponent implements OnInit{
               text: `Número de venta ${data.value.numeroDocumento}`,
               showConfirmButton: false,
               showCancelButton: false,
-              timer: 4000,
+              timer: 5000,
+              allowOutsideClick: false,
               timerProgressBar: true,
             });
           }else{
