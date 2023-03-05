@@ -92,4 +92,12 @@ export class VentaComponent implements OnInit{
     });
   }
 
+  eliminarProducto(detalleV: DetalleVenta){
+    this.totalPagar = this.totalPagar - parseFloat(detalleV.totalTexto);
+    this.listaProductosParaVenta = this.listaProductosParaVenta.filter(p => p.idProducto != detalleV.idProducto);
+
+    this.datosDetalleVenta = new MatTableDataSource(this.listaProductosParaVenta);
+
+  }
+
 }
