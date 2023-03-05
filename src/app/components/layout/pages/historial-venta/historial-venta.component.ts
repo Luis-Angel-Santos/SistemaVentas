@@ -38,7 +38,8 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit{
   columnasTabla: string[] = ['fechaRegistro', 'numeroDocumento', 'tipoPago', 'total', 'accion'];
   dataInicio: Venta[] = [];
   datosListaVentas = new MatTableDataSource(this.dataInicio);
-  @ViewChild(MatPaginator) paginacionTabla!: MatPaginator;
+  @ViewChild(MatPaginator) paginacionTabla! : MatPaginator;
+
 
   constructor(
     private _ventaServ: VentaService, 
@@ -91,7 +92,7 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit{
     this._ventaServ.historial(this.formularioBusqueda.value.buscarPor, this.formularioBusqueda.value.numero, _fechaInicio, _fechaFin).subscribe({
       next: (data) => {
         if(data.status){
-          this.datosListaVentas = data.value;
+          this.datosListaVentas.data = data.value;
         }else{
           this.formularioBusqueda.value.buscarPor,
           this._utilidadServ.mostrarAlerta('No se encontraron datos. Por favor intente de nuevo.', 'Opps ❌');

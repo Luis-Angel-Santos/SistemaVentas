@@ -22,7 +22,7 @@ export class ProductoComponent implements OnInit, AfterViewInit{
 
   constructor(private _productoServ: ProductoService,
               private _utilidadServ: UtilidadService,
-              private dialog: MatDialog,){}
+              private dialog: MatDialog){}
 
   obtenerProductos(){
     this._productoServ.lista().subscribe({
