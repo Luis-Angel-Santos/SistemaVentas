@@ -31,9 +31,9 @@ export const MY_DATA_FORMATS = {
 export class HistorialVentaComponent implements OnInit, AfterViewInit{
 
   formularioBusqueda: FormGroup;
-  opcionesBUsqueda: any[] = [
+  opcionesBusqueda: any[] = [
     { value: 'fecha', descripcion: 'Por fechas' },
-    { value: 'numero', descripcion: 'Número venta' },
+    { value: 'numero', descripcion: 'Número de venta' },
   ];
   columnasTabla: string[] = ['fechaRegistro', 'numeroDocumento', 'tipoPago', 'total', 'accion'];
   dataInicio: Venta[] = [];
@@ -47,7 +47,7 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit{
     private dialog: MatDialog){
 
       this.formularioBusqueda = this.fb.group({
-        buscaPor: ['fecha'],
+        buscarPor: ['fecha'],
         numero: [''],
         fechaInicio: [''],
         fechaFin: ['']
@@ -58,14 +58,12 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit{
           numero: '',
           fechaInicio: '',
           fechaFin: ''
-        });
+        })
       });
 
     }
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void { }
   
   ngAfterViewInit(): void {
     this.datosListaVentas.paginator = this.paginacionTabla;
@@ -81,10 +79,10 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit{
     let _fechaFin: string = '';
 
     if(this.formularioBusqueda.value.buscarPor === 'fecha'){
-      _fechaInicio = moment(this.formularioBusqueda.value.fechaInicio).format('DD:MM:YYYY');
-      _fechaFin = moment(this.formularioBusqueda.value.fechaFin).format('DD:MM:YYYY');
-      if(_fechaInicio === 'Invalid.date' || _fechaFin === 'Invalidate.date'){
-        this._utilidadServ.mostrarAlerta('Debe ingresar una fecha de inicio y fecha de fin.', 'Opps ❌');
+      _fechaInicio = moment(this.formularioBusqueda.value.fechaInicio).format('DD/MM/YYYY');
+      _fechaFin = moment(this.formularioBusqueda.value.fechaFin).format('DD/MM/YYYY');
+      if(_fechaInicio === 'Invalid date' || _fechaFin === 'Invalid date'){
+        this._utilidadServ.mostrarAlerta('Debes ingresar una fecha de inicio y una fecha de fin.', 'Opps ❌');
   
         return;
       }
@@ -109,7 +107,7 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit{
     this.dialog.open(ModalHistorialVentasComponent, {
       data: venta,
       disableClose: true,
-      width: '700px'
+      width: '800px'
     });
   }
 
