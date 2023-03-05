@@ -6,6 +6,8 @@ import { VentaService } from '../../../../services/venta.service';
 import { Producto } from '../../../../interfaces/producto';
 import { DetalleVenta } from 'src/app/interfaces/detalle-venta';
 import { UtilidadService } from 'src/app/shared/utilidad.service';
+import { Venta } from 'src/app/interfaces/venta';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-venta',
@@ -98,6 +100,45 @@ export class VentaComponent implements OnInit{
 
     this.datosDetalleVenta = new MatTableDataSource(this.listaProductosParaVenta);
 
+  }
+
+  registrarVenta(){
+    if(this.listaProductosParaVenta.length > 0){
+      this.bloquearBotonRegistrar = true;
+      const request: Venta = {
+        tipoPago: this.tipoPago,
+        totalTexto: String(this.totalPagar.toFixed(2)),
+        detalleVenta: this.listaProductosParaVenta
+      };
+
+      this._ventaServ.registrar(request).subscribe({
+        next: (data) => {
+          if(data.status){
+            this.totalPagar = 0.00;
+            this.listaProductosParaVenta = [];
+            this.datosDetalleVenta = new MatTableDataSource(this.listaProductosParaVenta);
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Venta registrada correctamente!',
+              text: `Número de venta ${data.value.numeroDocumento}`,
+              showConfirmButton: false,
+              showCancelButton: false,
+              timer: 4000,
+              timerProgressBar: true,
+            });
+          }else{
+            this._utilidadServ.mostrarAlerta('No se pudo registrar la venta. Por favor intente de nuevo', 'Opps ❌')
+          }
+        },
+        complete:() => {
+            this.bloquearBotonRegistrar = false;
+        },
+        error:(err) => {
+          this._utilidadServ.mostrarAlerta(`Ah ocurrido un error inesperado: ${err.message}`, 'Opps! ❌');  
+        },
+      });
+    } 
   }
 
 }
