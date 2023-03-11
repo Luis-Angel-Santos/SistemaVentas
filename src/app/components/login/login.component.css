@@ -21,3 +21,7 @@
 .full-width{
     width: 80%;
 }
+
+.error{
+    color: red;
+}

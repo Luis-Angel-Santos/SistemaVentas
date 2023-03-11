@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Menu } from 'src/app/interfaces/menu';
 import { MenuService } from 'src/app/services/menu.service';
 import { UtilidadService } from 'src/app/shared/utilidad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-layout',
@@ -39,9 +40,24 @@ export class LayoutComponent implements OnInit{
   }
 
   cerrarSesion(){
-    this._utilidadServ.eliminarSesionUsuario()
-    this.router.navigate(['login']);
+    Swal.fire({
+      icon: 'warning',
+      title: '¿Estas Seguro?',
+      text: '¿Deseas cerrar la sesión?',
+      confirmButtonColor: 'red',
+      showCancelButton: true,
+      showConfirmButton: true,
+      cancelButtonColor: '#000080',
+      confirmButtonText: 'Si, cerrar sesión',
+      cancelButtonText: 'No, volver',
+      focusConfirm: true,
+    }).then((resp) => {
+      if(resp.isConfirmed){
+        this._utilidadServ.eliminarSesionUsuario()
+        this.router.navigate(['login']);
+      }
+    });
+    
   }
-
 
 }
