@@ -30,12 +30,17 @@ const routes: Routes = [
         component: VentaComponent
       },
       {
-        path: 'historial-venta',
+        path: 'historial_venta',
         component: HistorialVentaComponent
       },
       {
         path: 'reportes',
         component: ReporteComponent
+      },
+      {
+        path: '',
+        component: DashboardComponent,
+        pathMatch: 'full'
       }
     ]
   }
