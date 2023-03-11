@@ -27,7 +27,7 @@ export const MY_DATA_FORMATS = {
     {provide: MAT_DATE_FORMATS, useValue: MY_DATA_FORMATS}
   ]
 })
-export class ReporteComponent implements OnInit{
+export class ReporteComponent implements OnInit, AfterViewInit{
   
   formularioFiltro: FormGroup;
   listaVentasReporte: Reporte[] = [];
@@ -52,26 +52,26 @@ export class ReporteComponent implements OnInit{
     this.dataVentaReporte.paginator = this.paginacionTabla;
   }
 
-  buscarVentas(): void{
-
+  buscarVentas(){
+    
     const _fechaInicio = moment(this.formularioFiltro.value.fechaInicio).format('DD/MM/YYYY');
     const  _fechaFin = moment(this.formularioFiltro.value.fechaFin).format('DD/MM/YYYY');
     
     if(_fechaInicio === 'Invalid date' || _fechaFin === 'Invalid date'){
       this._utilidadServ.mostrarAlerta('Debes ingresar una fecha de inicio y una fecha de fin.', 'Opps ❌');
-
+      
       return;
     }
 
     this._ventaServ.reporte(_fechaInicio, _fechaFin).subscribe({
       next: (data) => {
         if(data.status){
-          this.listaVentasReporte = data.value;
           this.dataVentaReporte.data = data.value;
+          this.listaVentasReporte = data.value;
         }else{
+          this._utilidadServ.mostrarAlerta('No se encontraron datos relacionados', 'Opps ❌');
           this.listaVentasReporte = [];
           this.dataVentaReporte.data = [];
-          this._utilidadServ.mostrarAlerta('No se encontraron datos relacionados', 'Opps ❌');
         }
       },
       error: (err) => {
@@ -80,7 +80,7 @@ export class ReporteComponent implements OnInit{
     });
   }
 
-  exportarExcel(): void{
+  exportarExcel(){
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(this.listaVentasReporte);
     XLSX.utils.book_append_sheet(wb,ws,'Reporte');
