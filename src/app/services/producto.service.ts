@@ -14,22 +14,37 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  //obtener todos los productos
+  /**
+   * Obtener lista de productos
+   * @returns
+   */
   lista():Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista`);
   }
 
-  //guardar un nuevo producto
+  /**
+   * Guardar un producto nuevo
+   * @param request
+   * @returns
+   */
   guardar(request: Producto):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlAPI}Guardar`, request);
   }
 
-  //editar un producto existente
+  /**
+   * Editar un producto
+   * @param request
+   * @returns
+   */
   editar(request: Producto):Observable<ResponseApi>{
     return this.http.put<ResponseApi>(`${this.urlAPI}Editar`, request);
   }
 
-  //eliminar un producto mediante su id
+  /**
+   * Eliminar un producto por id
+   * @param id
+   * @returns
+   */
   eliminar(id: number):Observable<ResponseApi>{
     return this.http.delete<ResponseApi>(`${this.urlAPI}Eliminar/${id}`);
   }

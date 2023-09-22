@@ -14,17 +14,33 @@ export class VentaService {
 
   constructor(private http: HttpClient) { }
 
-  //registrar una venta
+  /**
+   * Registrar venta
+   * @param request
+   * @returns
+   */
   registrar(request: Venta):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlAPI}Registrar`, request);
   }
 
-  //consultar ventas
+  /**
+   * Obtener historial de ventas por filtro
+   * @param buscarPor
+   * @param numeroVenta
+   * @param fechaInicio
+   * @param fechaFin
+   * @returns
+   */
   historial(buscarPor: string, numeroVenta: string, fechaInicio: string, fechaFin: string):Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Historial?buscarPor=${buscarPor}&numeroVenta=${numeroVenta}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
   }
 
-  //generar reporte de ventas
+  /**
+   * Obtener reporte de ventas por rango de fechas para generar excel
+   * @param fechaInicio
+   * @param fechaFin
+   * @returns
+   */
   reporte(fechaInicio: string, fechaFin: string):Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Reporte?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
   }

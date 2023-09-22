@@ -13,7 +13,11 @@ export class MenuService {
 
   constructor(private http: HttpClient) { }
 
-  //obtener los menus asignados a un usuario mediante su id 
+  /**
+   * Obtener menus por usuario
+   * @param idUsuario
+   * @returns
+   */
   lista(idUsuario: number):Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista?idUsuario=${idUsuario}`);
   }

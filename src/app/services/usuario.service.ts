@@ -15,27 +15,46 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  //iniciar sesion con las credenciales
+  /**
+   * Validar usuario y contraseña
+   * @param request
+   * @returns
+   */
   iniciarSesion(request: Login):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlAPI}IniciarSesion`, request);
   }
 
-  //obtener todos los usuarios
+  /**
+   * Obtener todos los usuarios
+   * @returns
+   */
   lista():Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista`);
   }
 
-  //guardar un nuevo usuario
+  /**
+   * Guardar un nuevo usuario
+   * @param request
+   * @returns
+   */
   guardar(request: Usuario):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlAPI}Guardar`, request);
   }
 
-  //editar un usuario existente
+  /**
+   * Editar un usuario
+   * @param request
+   * @returns
+   */
   editar(request: Usuario):Observable<ResponseApi>{
     return this.http.put<ResponseApi>(`${this.urlAPI}Editar`, request);
   }
 
-  //eliminar un usuario mediante su id
+  /**
+   * Eliminar un usuario por id
+   * @param id
+   * @returns
+   */
   eliminar(id: number):Observable<ResponseApi>{
     return this.http.delete<ResponseApi>(`${this.urlAPI}Eliminar/${id}`);
   }

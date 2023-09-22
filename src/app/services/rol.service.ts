@@ -13,7 +13,10 @@ export class RolService {
 
   constructor(private http: HttpClient) { }
 
-  //obtener todos los roles
+  /**
+   * Obtener lista de roles
+   * @returns
+   */
   lista():Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista`);
   }

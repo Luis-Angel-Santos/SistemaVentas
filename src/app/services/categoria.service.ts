@@ -13,7 +13,10 @@ export class CategoriaService {
 
   constructor(private http: HttpClient) { }
 
-  //obtener todas la categorias
+  /**
+   * Método que lista las categorias
+   * @returns
+   */
   lista():Observable<ResponseApi>{
     return this.http.get<ResponseApi>(`${this.urlAPI}Lista`);
   }
